@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programacion en Redes</title>
+</head>
+<body>
+    <h1>Programacion en Redes</h1>
+
+    <ul>
+        <li><a href="ejercicio1.php">Ejercicio 1</a></li>
+        <li><a href="ejercicio2.php">Ejercicio 2</a></li>
+        <li><a href="ejercicio3.php">Ejercicio 3</a></li>
+        <li><a href="ejercicio4.php">Ejercicio 4</a></li>
+    </ul>
+</body>
+</html>
