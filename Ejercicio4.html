@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 4: Uso de Iframes</title>
+</head>
+<body>
+    <h1>Uso de Iframes</h1>
+
+    <h2>Menú de navegación para cambiar el Iframe</h2>
+    <!-- Para que los enlaces abran en el iframe, se utiliza el atributo target con el nombre del iframe -->
+    <nav>
+        <ul>
+            <li><a href="Ejercicio1.html" target="iframeDinamico">Ver Ejercicio 1</a></li>
+            <li><a href="Ejercicio2.html" target="iframeDinamico">Ver Ejercicio 2</a></li>
+            <li><a href="apunte.pdf" target="iframeDinamico">Ver Archivo PDF (apunte.pdf)</a></li>
+            <li><a href="video.mp4" target="iframeDinamico">Ver Video Local (video.mp4)</a></li>
+            <!-- Los videos de youtube necesitan el formato /embed/ para mostrarse en iframes -->
+            <li><a href="https://www.youtube.com/embed/jNQXAC9IVRw" target="iframeDinamico">Ver Video YouTube</a></li>
+        </ul>
+    </nav>
+
+    <h2>Iframe de contenido dinámico</h2>
+    <!-- Este es el primer iframe donde se cargará el contenido de los links de arriba -->
+    <iframe name="iframeDinamico" width="800" height="500" src="Ejercicio1.html" title="Iframe Dinámico"></iframe>
+
+    <br><br>
+    
+    <h2>Segundo Iframe (Código recomendado por YouTube)</h2>
+    <p>A continuación se muestra un iframe utilizando el código específico que proporciona YouTube al compartir un video, para comparar diferencias visuales y atributos especiales (como allowfullscreen).</p>
+    
+    <iframe width="800" height="500" src="https://www.youtube.com/embed/jNQXAC9IVRw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</body>
+</html>
