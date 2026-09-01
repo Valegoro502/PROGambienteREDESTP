@@ -1,0 +1,87 @@
+﻿
+body {
+  font-family: "Times New Roman", Times, serif; 
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+
+.contenedor-global {
+  position: relative; 
+  width: 90%;
+  margin: 20px auto; 
+  background-color: #add8e6; 
+  height: 1200px; 
+}
+
+
+.contenedor-global h2 {
+  background-color: #2b579a;
+  color: white;
+  display: inline-block;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 1.1rem;
+  font-family: Arial, sans-serif;
+}
+
+
+.contenedor-1, .contenedor-2, .contenedor-3 {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.contenedor-1 h3, .contenedor-2 h3, .contenedor-3 h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  color: #111;
+}
+
+.contenedor-1 p, .contenedor-3 p {
+  margin: 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+
+.contenedor-1 {
+  top: 150px;
+  left: 10%;
+  width: 350px;
+  height: 350px;
+  background-color: #00fa9a; 
+  padding: 20px;
+  z-index: 1; 
+}
+
+
+.contenedor-3 {
+  top: 380px;
+  left: 25%;
+  width: 450px;
+  height: 350px;
+  background-color: rgba(150, 150, 150, 0.6); 
+  padding: 20px;
+  z-index: 3; 
+}
+
+
+.contenedor-2 {
+  top: 650px;
+  left: 45%;
+  width: 400px;
+  background-color: #d4fcd4; 
+  padding: 15px;
+  transform: rotate(15deg); 
+  z-index: 2; 
+  text-align: center;
+}
+
+.contenedor-2 .imagen-prueba {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+

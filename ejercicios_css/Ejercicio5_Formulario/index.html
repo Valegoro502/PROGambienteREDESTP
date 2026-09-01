@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio 5 - Formulario Responsive (RWD)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  
+  <header>
+    <h2>Formulario de Control</h2>
+  </header>
+  
+  
+  <section class="zona-media">
+    <form action="#" method="get">
+      
+      <div class="grid-entradas">
+        
+        <div class="entrada">
+          <label for="inp1">1 Apellido:</label>
+          <input type="text" id="inp1" name="apellido">
+        </div>
+        <div class="entrada">
+          <label for="inp2">2 Nombres:</label>
+          <input type="text" id="inp2" name="nombres">
+        </div>
+        <div class="entrada">
+          <label for="inp3">3 ContraseÃ±a:</label>
+          <input type="password" id="inp3" name="pass">
+        </div>
+        <div class="entrada">
+          <label for="inp4">4 Campo deshabilitado:</label>
+          <input type="text" id="inp4" disabled value="valor deshabilitado">
+        </div>
+        <div class="entrada">
+          <label for="inp5">5 Fecha:</label>
+          <input type="date" id="inp5" name="fecha">
+        </div>
+        
+        <div class="entrada">
+          <label for="inp6">6 DNI:</label>
+          <input type="number" id="inp6" name="dni">
+        </div>
+        <div class="entrada">
+          <label>7 Actividades extracurriculares:</label>
+          <div class="grupo-checks">
+            MÃºsica: <input type="checkbox"> <br>
+            Pintura artÃ­stica: <input type="checkbox">
+          </div>
+        </div>
+        <div class="entrada">
+          <label>8 Sexo:</label>
+          <div class="grupo-checks">
+            Masculino: <input type="radio" name="sexo"> <br>
+            Femenino: <input type="radio" name="sexo">
+          </div>
+        </div>
+        <div class="entrada">
+          <label>9 VacÃ­o</label>
+        </div>
+        <div class="entrada">
+          <label for="inp10">10 Estudios cursados:</label>
+          <select id="inp10">
+            <option>Primarios</option>
+            <option>Secundarios</option>
+            <option>Universitarios</option>
+          </select>
+        </div>
+
+        <div class="entrada">
+          <label for="inp11">11 Ãrea de desempeÃ±o:</label>
+          <select id="inp11">
+            <option>AdministraciÃ³n</option>
+            <option>Ventas</option>
+          </select>
+        </div>
+        <div class="entrada">
+          <label for="inp12">12 Turno:</label>
+          <select id="inp12">
+            <option>MaÃ±ana</option>
+            <option>Tarde</option>
+          </select>
+        </div>
+        <div class="entrada">
+          <label>13 Conduce:</label>
+          <div class="grupo-checks">
+            SI <input type="radio" name="conduce"> NO <input type="radio" name="conduce">
+          </div>
+        </div>
+        <div class="entrada">
+          <label for="inp14">14 TelÃ©fono:</label>
+          <input type="tel" id="inp14">
+        </div>
+        <div class="entrada">
+          <label for="inp15">15 Correo ElectrÃ³nico:</label>
+          <input type="email" id="inp15">
+        </div>
+      </div>
+
+      
+      <div class="zona-botones">
+        <button type="submit">Enviar</button>
+        <button type="reset">Reset</button>
+      </div>
+
+    </form>
+  </section>
+
+  
+  <footer>
+    <h2>Pie de formulario</h2>
+  </footer>
+
+</body>
+</html>
+
