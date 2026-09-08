@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 11</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <p>Ejemplo de Funcion Flecha</p>
+    <input type="number" id="num1" value="4">
+    <input type="number" id="num2" value="5">
+    <button onclick="ejecutar()">Multiplicar</button>
+    <p id="res"></p>
+    <script>
+        const multiplicar = (a, b) => {
+            let c = a * b;
+            return c;
+        };
+        
+        function ejecutar() {
+            let v1 = Number(document.getElementById('num1').value);
+            let v2 = Number(document.getElementById('num2').value);
+            document.getElementById('res').innerText = 'Resultado de la multiplicación: ' + multiplicar(v1, v2);
+        }
+    </script>
+    <br><br><a href="index.html">Volver al índice</a>
+</body>
+</html>

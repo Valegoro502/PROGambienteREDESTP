@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Arreglo de Colores</h1>
+    <script>
+        var colores = ['rojo', 'verde'];
+        var nuevo = prompt('Ingresa un nuevo color al arreglo:');
+        colores.push(nuevo);
+        
+        document.write('<p>Tipo de dato del array: ' + typeof(colores) + '</p>');
+        document.write('<p>Primer elemento: ' + colores[0] + '</p>');
+        document.write('<p>Segundo elemento: ' + colores[1] + '</p>');
+        document.write('<p>Tercer elemento: ' + colores[2] + '</p>');
+        document.write('<p>Cantidad total de elementos: ' + colores.length + '</p>');
+    </script>
+    <br><a href="index.html">Volver al índice</a>
+</body>
+</html>

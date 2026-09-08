@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 9</title>
+    <style>
+        .calculadora { width: 100%; max-width: 700px; background-color: #e0e0e0; padding: 20px; box-sizing: border-box; border: 1px solid #ccc; font-family: Arial, sans-serif; }
+        .display-container { padding-bottom: 20px; }
+        .calculadora input.display { width: 100%; height: 50px; font-size: 24px; text-align: right; box-sizing: border-box; border: 1px solid #aaa; padding: 10px; background-color: white; border-radius: 0; margin: 0; }
+        .botones { background-color: #a3d4e8; padding: 20px; display: flex; flex-wrap: wrap; justify-content: flex-start; }
+        .calculadora .botones button { width: 30%; margin: 10px 1.6%; padding: 15px; cursor: pointer; color: black; background-color: #f0f0f0; border: 1px solid #bbb; border-radius: 0; font-size: 16px; }
+        .calculadora .botones button:hover { background-color: #e4e4e4; }
+        .operaciones { background-color: #faf5ce; padding: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; }
+        .calculadora .operaciones button { width: 48%; margin: 10px 0; padding: 15px; cursor: pointer; color: black; background-color: #f0f0f0; border: 1px solid #bbb; border-radius: 0; font-size: 16px; }
+        .calculadora .operaciones button:hover { background-color: #e4e4e4; }
+    </style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="calculadora">
+        <div class="display-container">
+            <input type="text" id="display" class="display" readonly value="0">
+        </div>
+        <div class="botones">
+            <button onclick="insertar(1)">1</button>
+            <button onclick="insertar(2)">2</button>
+            <button onclick="insertar(3)">3</button>
+            <button onclick="insertar(4)">4</button>
+            <button onclick="insertar(5)">5</button>
+            <button onclick="insertar(6)">6</button>
+            <button onclick="insertar(7)">7</button>
+            <button onclick="insertar(8)">8</button>
+            <button onclick="insertar(9)">9</button>
+            <button onclick="insertar(0)">0</button>
+        </div>
+        <div class="operaciones">
+            <button onclick="sumarAcumulador()">+Acumulador</button>
+            <button onclick="mostrarAcumulador()">Muestra Acumulador</button>
+            <button onclick="borrarAcumulador()">Borra Acumulador</button>
+            <button onclick="borrarDisplay()">Borra display</button>
+        </div>
+    </div>
+    <script>
+        var acumulador = 0;
+        const display = document.getElementById('display');
+        
+        function insertar(num) {
+            if (display.value === '0') display.value = num;
+            else display.value += num.toString();
+        }
+        function sumarAcumulador() {
+            acumulador += Number(display.value);
+            display.value = '0';
+        }
+        function mostrarAcumulador() {
+            display.value = acumulador;
+        }
+        function borrarDisplay() {
+            display.value = '0';
+        }
+        function borrarAcumulador() {
+            acumulador = 0;
+            display.value = '0';
+        }
+    </script>
+    <br><a href="index.html">Volver al índice</a>
+</body>
+</html>

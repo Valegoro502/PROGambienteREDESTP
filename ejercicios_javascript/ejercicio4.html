@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+    <style>#resultado { background-color: lightgray; padding: 10px; margin-top: 10px; }</style>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button onclick="accionVarZ()">var z;</button>
+    <button onclick="accionLetQ()">let q;</button>
+    <button onclick="accionVarA()">var a=1;</button>
+    <button onclick="accionVarB()">var b="1";</button>
+    <button onclick="accionVarC()">var c=2;</button>
+    <button onclick="suma1()">suma1=a+b;</button>
+    <button onclick="suma2()">suma2=a+c;</button>
+    <div id="resultado">Los resultados aparecerán aquí</div>
+    <script>
+        var z;
+        let q;
+        var a = 1;
+        var b = "1";
+        var c = 2;
+        
+        function accionVarZ() {
+            document.getElementById('resultado').innerHTML = 'z declarada sin asignar. Tipo: ' + typeof(z);
+        }
+        function accionLetQ() {
+            document.getElementById('resultado').innerHTML = 'q declarada sin asignar. Tipo: ' + typeof(q);
+        }
+        function accionVarA() {
+            document.getElementById('resultado').innerHTML = 'a = ' + a + '. Tipo: ' + typeof(a);
+        }
+        function accionVarB() {
+            document.getElementById('resultado').innerHTML = 'b = "' + b + '". Tipo: ' + typeof(b);
+        }
+        function accionVarC() {
+            document.getElementById('resultado').innerHTML = 'c = ' + c + '. Tipo: ' + typeof(c);
+        }
+        function suma1() {
+            let res = a + b;
+            document.getElementById('resultado').innerHTML = 'suma1 = a + b = ' + res + ' (Concatenación por string. Tipo: ' + typeof(res) + ')';
+        }
+        function suma2() {
+            let res = a + c;
+            document.getElementById('resultado').innerHTML = 'suma2 = a + c = ' + res + ' (Suma matemática real. Tipo: ' + typeof(res) + ')';
+        }
+    </script>
+    <br><br><a href="index.html">Volver al índice</a>
+</body>
+</html>

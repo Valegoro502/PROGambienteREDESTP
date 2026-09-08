@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <button onclick="local()">Declaración local con asignación</button>
+    <button onclick="global()">Asignación forzada sin declaración</button>
+    <button onclick="mostrar()">Muestra variable global</button>
+    <script>
+        var miVariableGlobal;
+        alert('Estado inicial variable global: ' + miVariableGlobal + ', tipo: ' + typeof(miVariableGlobal));
+        
+        const local = function() {
+            var miVariableLocal = prompt('Ingresa un texto (se guardará localmente):');
+        }
+        const global = function() {
+            miVariableGlobal = prompt('Ingresa un texto (se forzará como global sin var ni let):');
+        }
+        const mostrar = function() {
+            alert('Valor actual de la global: ' + miVariableGlobal + ', tipo: ' + typeof(miVariableGlobal));
+        }
+    </script>
+    <br><br><a href="index.html">Volver al índice</a>
+</body>
+</html>

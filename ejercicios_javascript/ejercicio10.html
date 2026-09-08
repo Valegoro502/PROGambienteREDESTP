@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <label>Nombre:</label>
+    <input type="text" id="nombre" onchange="convertirMayusculas(this)">
+    <br><br>
+    <label>Apellido:</label>
+    <input type="text" id="apellido" onchange="convertirMayusculas(this)">
+    <script>
+        function convertirMayusculas(elemento) {
+            elemento.value = elemento.value.toUpperCase();
+        }
+    </script>
+    <br><br><a href="index.html">Volver al índice</a>
+</body>
+</html>

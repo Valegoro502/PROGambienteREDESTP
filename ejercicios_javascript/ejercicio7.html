@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <input type="number" id="valor" value="3">
+    <br><br>
+    <button id="btnMostrar">Mostrar Valor</button>
+    <button id="btnSumar1">Suma 1</button>
+    <button id="btnCuadrado">x²</button>
+    <button id="btnMult2">Multiplicar por 2</button>
+    <button id="btnPotencia">2^x</button>
+    
+    <script>
+        const input = document.getElementById('valor');
+        
+        document.getElementById('btnMostrar').addEventListener('click', () => {
+            alert('Valor actual en el input: ' + input.value);
+        });
+        document.getElementById('btnSumar1').addEventListener('click', () => {
+            input.value = Number(input.value) + 1;
+        });
+        document.getElementById('btnCuadrado').addEventListener('click', () => {
+            input.value = Math.pow(Number(input.value), 2);
+        });
+        document.getElementById('btnMult2').addEventListener('click', () => {
+            input.value = Number(input.value) * 2;
+        });
+        document.getElementById('btnPotencia').addEventListener('click', () => {
+            input.value = Math.pow(2, Number(input.value));
+        });
+    </script>
+    <br><br><a href="index.html">Volver al índice</a>
+</body>
+</html>

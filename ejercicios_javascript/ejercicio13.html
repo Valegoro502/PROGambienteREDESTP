@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 13</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Formulario con Confirmación</h2>
+    <form id="miFormulario" action="#" method="GET">
+        <label>Nombre:</label>
+        <input type="text" name="nombre"><br><br>
+        <label>Apellido:</label>
+        <input type="text" name="apellido"><br><br>
+        <button type="button" onclick="blanquear()">Blanquear (Reset)</button>
+        <button type="button" onclick="enviar()">Enviar</button>
+    </form>
+    <script>
+        const form = document.getElementById('miFormulario');
+        function blanquear() {
+            form.reset();
+        }
+        function enviar() {
+            if (confirm('¿Estás seguro de que deseas enviar los datos?')) {
+                form.submit();
+            }
+        }
+    </script>
+    <br><br><a href="index.html">Volver al índice</a>
+</body>
+</html>
