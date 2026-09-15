@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operacion: Alta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Operacion Realizada: ALTA</h1>
+    <div id="info"></div>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var ape = params.get('apellido');
+        var nom = params.get('nombres');
+        var saldo = params.get('saldo');
+        
+        if(ape || nom || saldo) {
+            document.getElementById('info').innerHTML = "<p>Se ha dado de alta a: <strong>" + nom + " " + ape + "</strong> con un saldo de: <strong>" + saldo + "</strong>.</p>";
+        } else {
+            document.getElementById('info').innerHTML = "<p>No se recibieron datos.</p>";
+        }
+    </script>
+    <br><button onclick="window.close()">Cerrar pestana</button>
+</body>
+</html>
+
+
+

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informacion enviada</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Tu informacion se mando correctamente</h1>
+    <div id="resultado"></div>
+    <script>
+        var params = new URLSearchParams(window.location.search);
+        var dia = params.get('dia');
+        var mes = params.get('mes');
+        
+        if(dia && mes) {
+            document.getElementById('resultado').innerHTML = "<p>Dia recibido: " + dia + "</p><p>Mes recibido: " + mes + "</p>";
+        } else {
+            document.getElementById('resultado').innerHTML = "<p>No se recibieron datos por GET.</p>";
+        }
+    </script>
+    <br><a href="ejercicio16.html">Volver</a>
+</body>
+</html>
+
+
+

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 18: Creacion Dinamica de DOM</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .main-container {
+            width: 80%;
+            margin: 0 auto;
+            border: 2px solid #3498db;
+            padding: 20px;
+            text-align: center;
+            min-height: 200px;
+            position: relative;
+        }
+        .controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .dynamic-item {
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin: 10px;
+            border-left: 5px solid #2ecc71;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Creacion Dinamica de Objetos</h1>
+    
+    <div class="main-container">
+        <div class="controls">
+            <button onclick="crearElemento()">Crear</button>
+            <button onclick="limpiarElementos()">Limpiar</button>
+            <button onclick="mostrarInfo()">Info</button>
+        </div>
+        <br><br>
+        <div id="elementosContainer"></div>
+    </div>
+
+    <script>
+        var contador = 1;
+
+        function crearElemento() {
+            var contenedor = document.getElementById('elementosContainer');
+            var nuevoDiv = document.createElement('div');
+            nuevoDiv.className = 'dynamic-item';
+            nuevoDiv.textContent = 'Elemento creado ' + contador;
+            contenedor.appendChild(nuevoDiv);
+            contador++;
+        }
+
+        function limpiarElementos() {
+            var contenedor = document.getElementById('elementosContainer');
+
+            var hijos = Array.from(contenedor.childNodes);
+            hijos.forEach(function(nodo) {
+                contenedor.removeChild(nodo);
+            });
+            contador = 1;
+        }
+
+        function mostrarInfo() {
+            var contenedor = document.getElementById('elementosContainer');
+            var cantidad = contenedor.childNodes.length;
+            var mensaje = "Total de elementos: " + cantidad + "\n\nindices:\n";
+            
+            var hijos = Array.from(contenedor.childNodes);
+            hijos.forEach(function(nodo, index) {
+
+                if(nodo.nodeType === 1) {
+                    mensaje += "indice " + index + ": " + nodo.textContent + "\n";
+                }
+            });
+
+            alert(mensaje);
+        }
+    </script>
+    <br><br><a href="index.html" style="margin-left: 10%;">Volver a los ejercicios</a>
+</body>
+</html>
+
+
+

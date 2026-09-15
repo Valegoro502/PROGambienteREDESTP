@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 14: Traduccion</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="tituloPrincipal">Bienvenido a nuestro sitio web 🇦🇷</h1>
+    
+    <script>
+        window.onload = function() {
+            var userLang = navigator.language || navigator.userLanguage; 
+            if (userLang.startsWith('en')) {
+                document.getElementById('tituloPrincipal').textContent = "Welcome to our website 🇺🇸";
+            }
+        };
+    </script>
+    <br><br><a href="index.html">Volver a los ejercicios</a>
+</body>
+</html>
+
+
+

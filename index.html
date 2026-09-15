@@ -3,13 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programación en Redes</title>
+    <title>Programacion en Redes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            padding: 20px 20px 0 20px;
+            color: #2c3e50;
+        }
+        p {
+            padding: 10px 20px;
+            color: #333;
+        }
+        #menu {
+          background: #333;
+          color: #fff;
+        }
+        .menu-horizontal {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+        }
+        .menu-horizontal > li {
+          position: relative;
+        }
+        .menu-horizontal > li > a {
+          display: block;
+          padding: 15px 20px;
+          color: #fff;
+          text-decoration: none;
+          font-weight: bold;
+        }
+        .menu-horizontal > li:hover > a {
+          background: #555;
+        }
+        .submenu {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background: #444;
+          list-style: none;
+          margin: 0;
+          padding: 5px 0;
+          min-width: 250px;
+          z-index: 1000;
+          box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+        }
+        .submenu li a {
+          color: #fff;
+          padding: 10px 15px;
+          display: block;
+          text-decoration: none;
+        }
+        .submenu li a:hover {
+          background: #666;
+        }
+        .menu-horizontal > li:hover .submenu {
+          display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Programación en Redes</h1>
-    <p>Bienvenido. Desde aquí puedes entrar a la carpeta ejercicios_html con los ejercicios.</p>
-    <p><a href="ejercicios_html/">Ir a ejercicios html</a></p>
-    <p><a href="ejercicios_css/">Ir a ejercicios css</a></p>
-    <p><a href="ejercicios_javascript/">Ir a ejercicios javascript</a></p>
+    <nav id="menu">
+        <ul class="menu-horizontal">
+            <li><a href="ejercicios_html/index.html">HTML</a>
+                <ul class="submenu">
+                    <li><a href="ejercicios_html/Ejercicio1/index.html">Ejercicio 1</a></li>
+                    <li><a href="ejercicios_html/Ejercicio2/index.html">Ejercicio 2</a></li>
+                    <li><a href="ejercicios_html/Ejercicio3/index.html">Ejercicio 3</a></li>
+                    <li><a href="ejercicios_html/Ejercicio4/index.html">Ejercicio 4</a></li>
+                </ul>
+            </li>
+            <li><a href="ejercicios_css/index.html">CSS</a>
+                <ul class="submenu">
+                    <li><a href="ejercicios_css/1-EstilosHeaders/index.html">1 - Estilos Headers</a></li>
+                    <li><a href="ejercicios_css/2-SelectoresClase/index.html">2 - Selectores de clase</a></li>
+                    <li><a href="ejercicios_css/3-StyleInFile/index.html">3 - Style in File</a></li>
+                    <li><a href="ejercicios_css/4-FontSize/index.html">4 - Font Size</a></li>
+                    <li><a href="ejercicios_css/5-BackgroundFijo/index.html">5 - Background Fijo</a></li>
+                    <li><a href="ejercicios_css/6-CentradoPadding/index.html">6 - Centrado y Padding</a></li>
+                    <li><a href="ejercicios_css/Ejercicio1_Divs/index.html">Parte 2: Divs relativos/fijos</a></li>
+                    <li><a href="ejercicios_css/Ejercicio2_Absoluto/index.html">Parte 2: Absoluto y Rotacion</a></li>
+                    <li><a href="ejercicios_css/Ejercicio3_Flexbox/index.html">Parte 2: Flexbox</a></li>
+                    <li><a href="ejercicios_css/Ejercicio4_Menu/index.html">Parte 2: Menu Dinamico</a></li>
+                    <li><a href="ejercicios_css/Ejercicio5_Formulario/index.html">Parte 2: Formulario Responsive</a></li>
+                    <li><a href="ejercicios_css/Ejercicio6_TablaResponsive/index.html">Parte 2: Tabla Responsive</a></li>
+                </ul>
+            </li>
+            <li><a href="ejercicios_javascript/index.html">JavaScript</a>
+                <ul class="submenu">
+                    <li><a href="ejercicios_javascript/ejercicio1.html">Ejercicio 1: Sentencias Basicas</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio2.html">Ejercicio 2: Debugger</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio3.html">Ejercicio 3: Comando en Evento</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio4.html">Ejercicio 4: Variables Simples</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio5.html">Ejercicio 5: Modif. Variables Globales</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio6.html">Ejercicio 6: Arreglo Simple (Array)</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio7.html">Ejercicio 7: Operaciones sobre un Input</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio8.html">Ejercicio 8: Operaciones Varios Inputs</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio9.html">Ejercicio 9: Calculadora</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio10.html">Ejercicio 10: Convertir a Mayusculas</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio11.html">Ejercicio 11: Funcion Flecha</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio12.html">Ejercicio 12: Redireccion</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio13.html">Ejercicio 13: Formulario con Confirmacion</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio14.html">Ejercicio 14: Traduccion (Idioma Navegador)</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio15.html">Ejercicio 15: Gestion en Memoria</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio16.html">Ejercicio 16: Validacion OnKeyUp</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio17.html">Ejercicio 17: Formulario ABM Modal</a></li>
+                    <li><a href="ejercicios_javascript/ejercicio18.html">Ejercicio 18: Creacion Dinamica DOM</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    
+    <h1>Programacion en Redes</h1>
+    <p>Bienvenido. Selecciona una opcion del menu de navegacion superior para explorar los diferentes ejercicios de la materia.</p>
+    <p><strong>Alumno:</strong> Valentino Gorosito</p>
 </body>
 </html>

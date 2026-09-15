@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 15: Objetos en Memoria</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container { display: flex; justify-content: space-between; }
+        .form-section { width: 60%; }
+        .control-section { width: 30%; float: right; background: #e9ecef; padding: 15px; border-radius: 5px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Gestion de Personas en Memoria</h1>
+    
+    <div class="container">
+        <div class="form-section">
+            <form id="personaForm" onsubmit="event.preventDefault(); crearPersona();">
+                <label>Nombre:</label><br>
+                <input type="text" id="nombre" required><br>
+                
+                <label>Apellido:</label><br>
+                <input type="text" id="apellido" required><br>
+                
+                <label>Fecha de Nacimiento:</label><br>
+                <input type="date" id="fechaNac" required style="padding:8px; margin:5px 0; border:1px solid #ccc; border-radius:4px;"><br><br>
+            </form>
+        </div>
+        
+        <div class="control-section">
+            <h3>Controles</h3>
+            <button type="button" onclick="crearPersona()">Crear persona</button><br>
+            <button type="button" onclick="toggleTabla()">Ocultar/Listar presentacion</button>
+            <p>Total de registros: <span id="totalRegistros">0</span></p>
+        </div>
+    </div>
+
+    <div id="tablaContenedor" style="display: block;">
+        <h2>Lista de Personas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Fecha de Nacimiento</th>
+                </tr>
+            </thead>
+            <tbody id="tablaCuerpo">
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        var personas = [];
+
+        function crearPersona() {
+            var nom = document.getElementById('nombre').value;
+            var ape = document.getElementById('apellido').value;
+            var fec = document.getElementById('fechaNac').value;
+
+            if(!nom || !ape || !fec) {
+                alert("Por favor, complete todos los campos obligatorios.");
+                return;
+            }
+
+            var nuevaPersona = { nombre: nom, apellido: ape, fechaNacimiento: fec };
+            personas.push(nuevaPersona);
+            
+            document.getElementById('nombre').value = '';
+            document.getElementById('apellido').value = '';
+            document.getElementById('fechaNac').value = '';
+
+            actualizarTabla();
+        }
+
+        function actualizarTabla() {
+            var tbody = document.getElementById('tablaCuerpo');
+            tbody.innerHTML = '';
+
+            for(var i=0; i<personas.length; i++) {
+                var p = personas[i];
+                var tr = document.createElement('tr');
+                
+                var tdNom = document.createElement('td');
+                tdNom.textContent = p.nombre;
+                
+                var tdApe = document.createElement('td');
+                tdApe.textContent = p.apellido;
+                
+                var tdFec = document.createElement('td');
+                tdFec.textContent = p.fechaNacimiento;
+                
+                tr.appendChild(tdNom);
+                tr.appendChild(tdApe);
+                tr.appendChild(tdFec);
+                
+                tbody.appendChild(tr);
+            }
+
+            document.getElementById('totalRegistros').textContent = personas.length;
+        }
+
+        function toggleTabla() {
+            var tablaDiv = document.getElementById('tablaContenedor');
+            if (tablaDiv.style.display === 'none') {
+                tablaDiv.style.display = 'block';
+            } else {
+                tablaDiv.style.display = 'none';
+            }
+        }
+    </script>
+    <br><a href="index.html">Volver a los ejercicios</a>
+</body>
+</html>
+
+
+

@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 16: Validacion en Evento keyup</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Validacion en Tiempo Real (keyup)</h1>
+    
+    <form action="procesar.html" method="GET" id="valForm">
+        <label>Dia (1-31):</label><br>
+        <input type="number" id="dia" name="dia" onkeyup="validarDia()" onchange="validarDia()" oninput="validarDia()"><br>
+        
+        <label>Mes (1-12):</label><br>
+        <input type="number" id="mes" name="mes" onkeyup="validarMes()" onchange="validarMes()" oninput="validarMes()"><br><br>
+
+        <button type="reset">Resetear Formulario</button>
+        <button type="submit">Enviar (GET)</button>
+    </form>
+
+    <script>
+        function validarDia() {
+            var inputDia = document.getElementById('dia');
+            var valor = parseInt(inputDia.value, 10);
+            
+            if (inputDia.value !== '' && (isNaN(valor) || valor < 1 || valor > 31)) {
+                alert("El dia debe ser un numero entre 1 y 31.");
+                inputDia.value = '';
+            }
+        }
+
+        function validarMes() {
+            var inputMes = document.getElementById('mes');
+            var valor = parseInt(inputMes.value, 10);
+            
+            if (inputMes.value !== '' && (isNaN(valor) || valor < 1 || valor > 12)) {
+                alert("El mes debe ser un numero entre 1 y 12.");
+                inputMes.value = '';
+            }
+        }
+    </script>
+    <br><br><a href="index.html">Volver a los ejercicios</a>
+</body>
+</html>
+
+
+
