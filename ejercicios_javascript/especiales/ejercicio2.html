@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Especial 2 - Tabla Dinámica</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+        }
+        .header-general, .footer-general {
+            height: 10%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .controls {
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            background-color: #ddd;
+            height: 10%;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .table-container {
+            height: 70%;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            background-color: white;
+            overflow: hidden;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        thead, tfoot {
+            background-color: #eee;
+            flex-shrink: 0;
+        }
+        tbody {
+            flex-grow: 1;
+            overflow-y: auto;
+            display: block;
+        }
+        tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        @media (max-width: 800px) {
+            th:nth-child(3), td:nth-child(3),
+            th:nth-child(5), td:nth-child(5) {
+                display: none;
+            }
+        }
+        @media (max-width: 500px) {
+            th:nth-child(2), td:nth-child(2),
+            th:nth-child(6), td:nth-child(6) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" style="position: absolute; top: 10px; left: 10px; z-index: 9999; background: white; padding: 5px; text-decoration: none; border: 1px solid black; color: black; font-family: sans-serif; font-size: 12px; font-weight: bold;">Volver al índice principal</a>
+    <div class="header-general">
+        <h2>Presentación de Maestro de Artículos</h2>
+    </div>
+    
+    <div class="controls">
+        <button id="btnCargar">Cargar datos</button>
+        <button id="btnVaciar">Vaciar datos</button>
+    </div>
+
+    <div class="table-container">
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Familia</th>
+                    <th>Unidad</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                    <th>Saldo</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6" style="text-align: center;">Fin de la tabla</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <div class="footer-general">
+        <p>Pie de presentación</p>
+    </div>
+
+    <script>
+        const jsonString = `[
+            {"codigo": "A001", "familia": "Lácteos", "unidad": "Litro", "descripcion": "Leche Entera", "fecha": "2025-01-10", "saldo": 150},
+            {"codigo": "A002", "familia": "Conservas", "unidad": "Lata", "descripcion": "Duraznos en Almíbar", "fecha": "2025-02-01", "saldo": 80},
+            {"codigo": "A003", "familia": "Bebidas", "unidad": "Botella", "descripcion": "Gaseosa Cola", "fecha": "2025-01-15", "saldo": 200},
+            {"codigo": "A004", "familia": "Panadería", "unidad": "Kilo", "descripcion": "Pan Francés", "fecha": "2025-02-05", "saldo": 50},
+            {"codigo": "A005", "familia": "Limpieza", "unidad": "Unidad", "descripcion": "Detergente", "fecha": "2025-01-20", "saldo": 120},
+            {"codigo": "A006", "familia": "Lácteos", "unidad": "Kilo", "descripcion": "Queso Cremoso", "fecha": "2025-02-10", "saldo": 30},
+            {"codigo": "A007", "familia": "Bebidas", "unidad": "Litro", "descripcion": "Agua Mineral", "fecha": "2025-01-05", "saldo": 300},
+            {"codigo": "A008", "familia": "Carnicería", "unidad": "Kilo", "descripcion": "Asado", "fecha": "2025-02-11", "saldo": 40},
+            {"codigo": "A009", "familia": "Verdulería", "unidad": "Kilo", "descripcion": "Papa", "fecha": "2025-02-08", "saldo": 500},
+            {"codigo": "A010", "familia": "Conservas", "unidad": "Lata", "descripcion": "Atún", "fecha": "2025-01-25", "saldo": 100},
+            {"codigo": "A011", "familia": "Lácteos", "unidad": "Litro", "descripcion": "Yogur", "fecha": "2025-02-12", "saldo": 60},
+            {"codigo": "A012", "familia": "Limpieza", "unidad": "Litro", "descripcion": "Lavandina", "fecha": "2025-01-30", "saldo": 150},
+            {"codigo": "A013", "familia": "Panadería", "unidad": "Unidad", "descripcion": "Facturas", "fecha": "2025-02-15", "saldo": 120},
+            {"codigo": "A014", "familia": "Verdulería", "unidad": "Kilo", "descripcion": "Cebolla", "fecha": "2025-02-14", "saldo": 300},
+            {"codigo": "A015", "familia": "Carnicería", "unidad": "Kilo", "descripcion": "Pollo Entero", "fecha": "2025-02-16", "saldo": 80},
+            {"codigo": "A016", "familia": "Bebidas", "unidad": "Botella", "descripcion": "Cerveza", "fecha": "2025-01-20", "saldo": 250},
+            {"codigo": "A017", "familia": "Limpieza", "unidad": "Unidad", "descripcion": "Esponja", "fecha": "2025-01-18", "saldo": 400},
+            {"codigo": "A018", "familia": "Conservas", "unidad": "Lata", "descripcion": "Arvejas", "fecha": "2025-02-03", "saldo": 90},
+            {"codigo": "A019", "familia": "Lácteos", "unidad": "Kilo", "descripcion": "Dulce de Leche", "fecha": "2025-02-10", "saldo": 45},
+            {"codigo": "A020", "familia": "Panadería", "unidad": "Kilo", "descripcion": "Galletas de Agua", "fecha": "2025-01-28", "saldo": 300},
+            {"codigo": "A021", "familia": "Verdulería", "unidad": "Kilo", "descripcion": "Manzana", "fecha": "2025-02-18", "saldo": 150},
+            {"codigo": "A022", "familia": "Carnicería", "unidad": "Kilo", "descripcion": "Carne Picada", "fecha": "2025-02-19", "saldo": 60},
+            {"codigo": "A023", "familia": "Bebidas", "unidad": "Botella", "descripcion": "Jugo de Naranja", "fecha": "2025-02-05", "saldo": 180},
+            {"codigo": "A024", "familia": "Limpieza", "unidad": "Litro", "descripcion": "Desodorante Piso", "fecha": "2025-02-02", "saldo": 110},
+            {"codigo": "A025", "familia": "Conservas", "unidad": "Frasco", "descripcion": "Mermelada Frutilla", "fecha": "2025-01-12", "saldo": 75},
+            {"codigo": "A026", "familia": "Lácteos", "unidad": "Unidad", "descripcion": "Manteca", "fecha": "2025-02-20", "saldo": 85},
+            {"codigo": "A027", "familia": "Panadería", "unidad": "Unidad", "descripcion": "Budín Vainilla", "fecha": "2025-02-17", "saldo": 40},
+            {"codigo": "A028", "familia": "Verdulería", "unidad": "Kilo", "descripcion": "Tomate", "fecha": "2025-02-21", "saldo": 200},
+            {"codigo": "A029", "familia": "Carnicería", "unidad": "Kilo", "descripcion": "Cerdo", "fecha": "2025-02-22", "saldo": 35},
+            {"codigo": "A030", "familia": "Bebidas", "unidad": "Botella", "descripcion": "Agua Saborizada", "fecha": "2025-02-15", "saldo": 220}
+        ]`;
+
+        const btnCargar = document.getElementById('btnCargar');
+        const btnVaciar = document.getElementById('btnVaciar');
+        const tbody = document.getElementById('tableBody');
+
+        btnCargar.addEventListener('click', () => {
+            tbody.innerHTML = '';
+            
+            const articulos = JSON.parse(jsonString);
+            
+            articulos.forEach(articulo => {
+                const tr = document.createElement('tr');
+                
+                const campos = ['codigo', 'familia', 'unidad', 'descripcion', 'fecha', 'saldo'];
+                
+                campos.forEach(campo => {
+                    const td = document.createElement('td');
+                    td.textContent = articulo[campo];
+                    tr.appendChild(td);
+                });
+                
+                tbody.appendChild(tr);
+            });
+        });
+
+        btnVaciar.addEventListener('click', () => {
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+        });
+    </script>
+</body>
+</html>

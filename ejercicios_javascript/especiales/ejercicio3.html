@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Especial 3 - Ventana Modal Simple</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: serif;
+            background-color: lightblue;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        #contenedor {
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f0f0f0;
+            margin-bottom: 15px;
+        }
+        p {
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: absolute;
+            top: 50px;
+            left: 10%;
+            width: 80%;
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            background-color: #f5f5dc;
+            border: 1px solid #aaa;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .modal-overlay.active {
+            display: flex;
+        }
+        .modal-header {
+            background-color: #ccc;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .close-btn {
+            color: red;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .modal-footer {
+            background-color: #ccc;
+            padding: 10px;
+            font-weight: bold;
+        }
+        .form-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .form-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 20px);
+        }
+        .form-group label {
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            padding: 8px;
+            border: 1px solid #999;
+        }
+        .btn-enviar {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #eee;
+            border: 1px solid #999;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" style="position: absolute; top: 10px; right: 10px; z-index: 9999; background: white; padding: 5px; text-decoration: none; border: 1px solid black; color: black; font-family: sans-serif; font-size: 12px; font-weight: bold;">Volver al índice principal</a>
+    <div id="contenedor">
+        <h2>Esto es el div contenedor</h2>
+        <button id="btnAbrir">Abre DIV modal</button>
+        <p><strong>Ayudas para el ejercicio</strong>
+El div contenedor debera ser desactivado cuando se active la ventana modal
+Desactivar el contenedor podria ser darle transparencia y deshabilitar todos sus botones.
+Desactivado:
+pointer-events: none
+opacity: 0.3
+Activado:
+pointer-events: auto
+opacity: 1</p>
+    </div>
+
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-header">
+            <span>Encabezado modal</span>
+            <span class="close-btn" id="btnCerrar">X</span>
+        </div>
+        <div class="modal-body">
+            <div class="form-title">Formulario para ALTA - Maestro de Artículos</div>
+            <form id="altaForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="codArt">codArt:</label>
+                        <input type="number" id="codArt" name="codArt" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="familia">Familia de articulo:</label>
+                        <select id="familia" name="familia" required>
+                            <option value="">Seleccione...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion" name="descripcion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha">Fecha Alta:</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="saldo">Saldo stock:</label>
+                        <input type="number" id="saldo" name="saldo" value="0" min="0" required>
+                    </div>
+                    <div class="form-group" style="justify-content: flex-end;">
+                        <button type="button" class="btn-enviar" onclick="if(document.getElementById('altaForm').checkValidity()) { alert('Enviado'); } else { document.getElementById('altaForm').reportValidity(); }">ENVIAR</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            Pie del formulario
+        </div>
+    </div>
+
+    <script>
+        const btnAbrir = document.getElementById('btnAbrir');
+        const btnCerrar = document.getElementById('btnCerrar');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const contenedor = document.getElementById('contenedor');
+
+        btnAbrir.addEventListener('click', () => {
+            modalOverlay.classList.add('active');
+            contenedor.style.pointerEvents = 'none';
+            contenedor.style.opacity = '0.3';
+        });
+
+        btnCerrar.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+            contenedor.style.pointerEvents = 'auto';
+            contenedor.style.opacity = '1';
+        });
+
+        // Simulando una respuesta de servidor JSON con temática de Electrónica
+        const categoriasJSON = `[
+            {"id": "COMP", "nombre": "Computadoras"},
+            {"id": "CELU", "nombre": "Celulares y Smartphones"},
+            {"id": "TV", "nombre": "Televisores y Smart TV"},
+            {"id": "AUDIO", "nombre": "Audio y Sonido"},
+            {"id": "ACC", "nombre": "Accesorios Periféricos"}
+        ]`;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectFamilia = document.getElementById('familia');
+            const categorias = JSON.parse(categoriasJSON);
+            
+            categorias.forEach(categoria => {
+                const opcion = document.createElement('option');
+                opcion.value = categoria.id;
+                opcion.textContent = categoria.nombre;
+                selectFamilia.appendChild(opcion);
+            });
+        });
+    </script>
+</body>
+</html>

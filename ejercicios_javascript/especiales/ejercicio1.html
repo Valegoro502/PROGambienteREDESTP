@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio Especial 1 - Formulario de Alta Responsive</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body, html {
+            height: 100%;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            height: 10%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        main {
+            height: 80%;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+        }
+        footer {
+            height: 10%;
+            background-color: #333;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        form {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: calc(50% - 15px);
+        }
+        .form-group.full-width {
+            width: 100%;
+        }
+        label {
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        input, select {
+            padding: 15px;
+            font-size: 1.1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        @media (max-width: 600px) {
+            .form-group {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="../../index.html" style="position: absolute; top: 10px; left: 10px; z-index: 9999; background: white; padding: 5px; text-decoration: none; border: 1px solid black; color: black; font-family: sans-serif; font-size: 12px; font-weight: bold;">Volver al índice principal</a>
+    <div class="container">
+        <header>
+            <h1>Alta de Artículos</h1>
+        </header>
+        <main>
+            <form id="altaForm">
+                <div class="form-group">
+                    <label for="codigo">Código de Artículo</label>
+                    <input type="number" id="codigo" name="codigo" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="familia">Familia</label>
+                    <select id="familia" name="familia" required>
+                        <option value="">Seleccione una familia...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modelo">Modelo</label>
+                    <input type="text" id="modelo" name="modelo" required>
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha de Alta</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+                <div class="form-group">
+                    <label for="saldo">Saldo en Stock</label>
+                    <input type="number" id="saldo" name="saldo" min="0" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" id="descripcion" name="descripcion" required>
+                </div>
+                <div class="form-group full-width">
+                    <button type="button" onclick="if(document.getElementById('altaForm').checkValidity()) { alert('Enviado'); } else { document.getElementById('altaForm').reportValidity(); }">Guardar</button>
+                </div>
+            </form>
+        </main>
+        <footer>
+            <p>Pie de formulario</p>
+        </footer>
+    </div>
+    <script>
+        // Simulando una respuesta de servidor JSON con una temática diferente (Electrónica)
+        const categoriasJSON = `[
+            {"id": "COMP", "nombre": "Computadoras"},
+            {"id": "CELU", "nombre": "Celulares y Smartphones"},
+            {"id": "TV", "nombre": "Televisores y Smart TV"},
+            {"id": "AUDIO", "nombre": "Audio y Sonido"},
+            {"id": "ACC", "nombre": "Accesorios Periféricos"}
+        ]`;
+
+        // Se usa DOMContentLoaded para asegurar que el select existe
+        document.addEventListener('DOMContentLoaded', () => {
+            const selectFamilia = document.getElementById('familia');
+            const categorias = JSON.parse(categoriasJSON);
+            
+            categorias.forEach(categoria => {
+                const opcion = document.createElement('option');
+                opcion.value = categoria.id;
+                opcion.textContent = categoria.nombre;
+                selectFamilia.appendChild(opcion);
+            });
+        });
+    </script>
+</body>
+</html>
