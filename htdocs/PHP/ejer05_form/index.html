@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 05 - Formulario</title>
+</head>
+<body>
+    <h1>Ejercicio 05: Lectura de formularios</h1>
+    
+    <!-- Formulario método POST -->
+    <h2>Envío por POST</h2>
+    <form action="respuesta.php" method="POST">
+        <label for="nombre_post">Nombre:</label><br>
+        <input type="text" id="nombre_post" name="nombre" required><br><br>
+        
+        <label for="apellido_post">Apellido:</label><br>
+        <input type="text" id="apellido_post" name="apellido" required><br><br>
+        
+        <input type="hidden" name="metodo" value="POST">
+        <input type="submit" value="Enviar por POST">
+    </form>
+
+    <hr>
+
+    <!-- Formulario método GET -->
+    <h2>Envío por GET</h2>
+    <form action="respuesta.php" method="GET">
+        <label for="nombre_get">Nombre:</label><br>
+        <input type="text" id="nombre_get" name="nombre" required><br><br>
+        
+        <label for="apellido_get">Apellido:</label><br>
+        <input type="text" id="apellido_get" name="apellido" required><br><br>
+        
+        <input type="hidden" name="metodo" value="GET">
+        <input type="submit" value="Enviar por GET">
+    </form>
+
+</body>
+</html>
